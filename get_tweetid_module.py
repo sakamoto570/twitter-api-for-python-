@@ -29,10 +29,10 @@ def get_tweetID(CK, CS, AT, AS, ID):
 
 if __name__ == "__main__":
 
-    CK = "kBJNR9IoZVrSoggyxfYDqJ7Yy"                                    # Consumer Key
-    CS = "o7AyBcE06Hly7crq5DS5E8v2eFOoKnWo0rxAcILj0EAgmOwnqW"                                   # Consumer Secret
-    AT = "1025957662037487616-VrnMlG28WOwsF831nvYJFUGLYgSOJQ"                                 # Access Token
-    AS = "sskAIJPBiXH5XXMwtMLTmWmL0uj14vAw5kFz7utGR55BU"                                   # Accesss Token Secert
-    ID = "1025957662037487616"
+    CK = "###"                                    # Consumer Key
+    CS = "####"                                   # Consumer Secret
+    AT = "######"                                 # Access Token
+    AS = "####"                                   # Accesss Token Secert
+    ID = "###"
 
     print(get_tweetID(CK, CS, AT, AS, ID))
