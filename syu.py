@@ -3,10 +3,10 @@ import MeCab
 import random
 from requests_oauthlib import OAuth1Session #OAuthのライブラリの読み込み
 
-CK="kBJNR9IoZVrSoggyxfYDqJ7Yy"
-CS="o7AyBcE06Hly7crq5DS5E8v2eFOoKnWo0rxAcILj0EAgmOwnqW"
-AT="1025957662037487616-VrnMlG28WOwsF831nvYJFUGLYgSOJQ"
-AS="sskAIJPBiXH5XXMwtMLTmWmL0uj14vAw5kFz7utGR55BU"
+CK="###"
+CS="###"
+AT="###"
+AS="###"
 twitter = OAuth1Session(CK, CS, AT, AS) #認証処理
 
 url = "https://api.twitter.com/1.1/statuses/user_timeline.json" #タイムライン取得エンドポイント
