@@ -7,11 +7,11 @@ from time import sleep
 
 # TwitterAPIに必要なCK,CS,AT,ASを設定
 # 同時にTwitterアカウントも指定
-CK = "kBJNR9IoZVrSoggyxfYDqJ7Yy"                                    # Consumer Key
-CS = "o7AyBcE06Hly7crq5DS5E8v2eFOoKnWo0rxAcILj0EAgmOwnqW"                                   # Consumer Secret
-AT = "1025957662037487616-VrnMlG28WOwsF831nvYJFUGLYgSOJQ"                                 # Access Token
-AS = "sskAIJPBiXH5XXMwtMLTmWmL0uj14vAw5kFz7utGR55BU"                                   # Accesss Token Secert
-ID = "1025957662037487616"                                  # ID
+CK = "#####"                                    # Consumer Key
+CS = "######"                                   # Consumer Secret
+AT = "########"                                 # Access Token
+AS = "######"                                   # Accesss Token Secert
+ID = "#######"                                  # ID
 
 # 取得したツイート格納用配列の定義
 timeline = []
