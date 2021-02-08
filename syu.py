@@ -1,7 +1,6 @@
 import json #標準のjsonモジュールとconfig.pyの読み込み
 import MeCab
 import random
-from requests_oauthlib import OAuth1Session #OAuthのライブラリの読み込み
 
 CK="###"
 CS="###"
@@ -13,35 +12,34 @@ url = "https://api.twitter.com/1.1/statuses/user_timeline.json" #タイムライ
 url2 ="https://api.twitter.com/1.1/statuses/update.json"
 
 tweets_data =[]
-words=[] #単語リスト
+word1=[] #単語リスト
+word2=[]
+zyosi=[]
+zyodousi =[]
 tx=[]
+ty=[]
+tz =[]
 t_text=""
-dfile = 'C:/Users/sake_/Desktop/Tweet20180727.txt'#tweetfile
-hukusifile = 'C:/Users/sake_/Desktop/tweethuku.txt'#hukusifile
-keiyousifile = 'C:/Users/sake_/Desktop/tweetkei.txt'
-dousifile = 'C:/Users/sake_/Desktop/tweetdou.txt'
+dfile = 'C:/Users/sake_/py/twi.txt'#tweetfile
+hukusifile = 'C:/Users/sake_/py/twi_huku.txt'#hukusifile
 
-h_d={"名詞":"meishi","副詞":"hukushi","形容詞":"keiyousi","動詞":"doushi"}
-
-#params ={'count' : 5} #取得数
-res = twitter.get(url)#params = params)
-
+params ={'count' : 10,'screen_name' : '###'} #取得数
+res = twitter.get(url,params = params)
 
 
 if res.status_code == 200: #正常通信出来た場合
     timelines = json.loads(res.text) #レスポンスからタイムラインリストを取得
     for line in timelines: #タイムラインリストをループ処理
-        #print(line['text'])
         tweets_data.append(line['text'])
 
 else: #正常通信出来なかった場合
     print("Failed: %d" % res.status_code)
 
 with open(dfile, mode='w') as f:     #ツイートをtxtに書きこみ
-    f.write('\n'.join(tweets_data))
+   f.write('\n'.join(tweets_data))
 
-#with open(dfile) as f:
-    #print(f.read())
+with open(dfile) as f:
+    print(f.read())
 
 
 #形容詞分け
@@ -55,24 +53,32 @@ with open(dfile, 'r',) as f:
         node = mecab.parseToNode(reader)
 
         while node:
-            word_type = node.feature.split(",")[0]
+            word_type = node.feature.split(",")
 
-            #取得する単語は、"名詞", "動詞", "形容詞", "副詞"
-            if word_type in ["名詞", "動詞", "形容詞", "副詞"]:
-
-                words.append(node.surface)
-
+            #取得する単語は、"
+            if word_type[0] == "助詞":
+                zyosi.append(node.surface)
+            elif word_type[0] == "助動詞":
+                zyodousi.append(node.surface)
+            elif word_type[0] == "名詞" and word_type[1] == "一般":
+                word1.append(node.surface)
+            elif word_type[0] in ["名詞","動詞", "形容詞", "副詞"]:
+                word2.append(node.surface)
+                
             node = node.next
 
         reader = f.readline()
 
+
 with open(hukusifile, mode='w') as f:     #ツイートをtxtに書きこみ
     f.write('\n'.join(words))
 
-tx = (random.sample(words, 3))
-
-for x in tx:
-    t_text += x
+tx = (random.sample(word1, 1))    
+tx_2 = (random.sample(word2, 1))  
+ty = (random.sample(zyosi, 1))
+tz = (random.sample(zyodousi, 1))
+    
+t_text = "".join(tx)+"".join(ty)+"".join(tx_2)+"".join(tz)
 
 print(t_text)
 
